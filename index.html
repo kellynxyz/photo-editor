@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kellyn Style Photo Editor</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <!-- Feather Icons for lightweight, beautiful icons -->
+  <script src="https://unpkg.com/feather-icons"></script>
+</head>
+<body>
+  <!-- Dynamic Background that will change based on image colors -->
+  <div id="dynamic-bg"></div>
+
+  <!-- Main App Container -->
+  <main class="app-container">
+    <header>
+      <h1>Kellyn<span class="highlight">AI</span></h1>
+      <p>Transforma tus fotos usando Inteligencia Artificial. Elige un universo.</p>
+    </header>
+
+    <!-- Upload Area -->
+    <div id="upload-area" class="upload-area">
+      <input type="file" id="file-input" accept="image/jpeg, image/png, image/webp" hidden>
+      <div class="upload-content">
+        <i data-feather="upload-cloud" class="upload-icon"></i>
+        <h3>Sube tu foto</h3>
+        <p>Arrastra tu imagen aquí o <span>haz clic para explorar</span></p>
+      </div>
+    </div>
+
+    <!-- Editor Area (Hidden until image is uploaded) -->
+    <div id="editor-area" class="editor-area hidden">
+      <div class="photo-container">
+        <!-- Canvas where the image and filters are applied -->
+        <canvas id="photo-canvas"></canvas>
+        <div id="loading-overlay" class="hidden">
+          <i data-feather="loader" class="spin"></i> <span id="loading-text">Generando magia AI...</span>
+        </div>
+      </div>
+
+      <div class="controls-area">
+        <div class="controls-header">
+          <h2>Elige un Estilo</h2>
+          <div class="action-buttons">
+            <button id="btn-remix" class="btn-primary">
+              <i data-feather="shuffle"></i> Remix Aleatorio
+            </button>
+            <button id="btn-download" class="btn-secondary">
+              <i data-feather="download"></i> Guardar
+            </button>
+          </div>
+        </div>
+
+        <!-- Carousel of Presets -->
+        <div class="carousel-container">
+          <div id="preset-carousel" class="preset-carousel">
+            <!-- Preset cards will be injected here via JS -->
+          </div>
+        </div>
+      </div>
+      
+      <!-- Back button to reset -->
+      <button id="btn-reset" class="btn-text">
+        <i data-feather="arrow-left"></i> Subir otra foto
+      </button>
+    </div>
+  </main>
+
+  <!-- Color extraction library (ColorThief via CDN) -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/color-thief/2.3.0/color-thief.umd.js"></script>
+  
+  <!-- App Scripts -->
+  <script src="app.js"></script>
+  <script>
+    // Initialize icons
+    feather.replace();
+  </script>
+</body>
+</html>
